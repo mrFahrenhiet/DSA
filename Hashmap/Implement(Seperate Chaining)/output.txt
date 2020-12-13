@@ -1,0 +1,36 @@
+Bucket 0->(pepe, 88)->
+Bucket 1->(tabeta, 15)->(dog, 56)->
+Bucket 2->
+Bucket 3->(bat, 12)->(koke, 90)->
+Bucket 4->
+Bucket 5->
+Bucket 6->(tab, 5)->
+Bucket 7->
+Bucket 8->
+Bucket 9->
+Bucket 10->(batman, 235)->(god, 112)->
+Bucket 11->
+Bucket 12->
+Bucket 13->
+Bucket 14->
+Bucket 15->
+Bucket 16->
+
+batman
+Bucket 0->(pepe, 88)->
+Bucket 1->(tabeta, 15)->(dog, 56)->
+Bucket 2->
+Bucket 3->(bat, 12)->(koke, 90)->
+Bucket 4->
+Bucket 5->
+Bucket 6->(tab, 5)->
+Bucket 7->
+Bucket 8->
+Bucket 9->
+Bucket 10->(batman, 235)->
+Bucket 11->
+Bucket 12->
+Bucket 13->
+Bucket 14->
+Bucket 15->
+Bucket 16->
