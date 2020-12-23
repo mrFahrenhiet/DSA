@@ -1,6 +1,14 @@
 #include<bits/stdc++.h>
 #define ll long long int
 using namespace std;
+int smallestNos(int x) {
+	if(x%10==0 and x!=10)
+		return -1;
+	if(x/10==0)
+		return x;
+	(N % 9 + 1)* pow(10, (N / 9)) - 1;
+
+}
 int main() {
 	#ifndef ONLINE_JUDGE
     // for getting input from input.txt
@@ -8,16 +16,13 @@ int main() {
     // for writing output to output.txt
     freopen("output.txt", "w", stdout);
     #endif
-    string s;
-    cin>>s;
-    int ans = 0;
-
-    for(int i=0;i<s.length();i++) {
-    	int j = s.substr(i).find("bear");
-    	if(j!=-1)
-    		ans += s.length() - (i+j+3);
+    int t;
+    cin>>t;
+    while(t--) {
+    	int x;
+    	cin>>x;
+    	cout<<smallestNos(x)<<endl;
     }
-    cout<<ans<<endl;
     return 0;
 
 }
