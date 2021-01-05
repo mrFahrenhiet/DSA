@@ -6,9 +6,9 @@ public:
 	node* left;
 	node * right;
 	node(int d) {
-		data = d;
-		left = NULL;
-		right = NULL;
+		this->data = d;
+		this->left = NULL;
+		this->right = NULL;
 	}
 };
 node* bulid() {
@@ -30,6 +30,39 @@ void printPre(node *root) {
 	printPre(root->left);
 	printPre(root->right);
 }
+void printPreItrative(node *root) {
+	stack<node*> s;
+	while(true) {
+		while(root) {
+			s.push(root);
+			cout<<root->data<<endl;
+			root = root->left;
+		}
+		if(s.empty()) return;
+		else {
+			root = s.top();
+			s.pop();
+			root = root->right;
+		}
+	}
+}
+void printInItrative(node* root) {
+	stack<node*> s;
+	while(true) {
+		while(root) {
+			s.push(root);
+			root = root->left;
+		}
+		if(s.empty()) return;
+		else {
+			root = s.top();
+			cout<<root->data<<endl;
+			s.pop();
+			root = root->right;
+		}
+	}
+}
+
 void printPost(node *root) {
 	if(root==NULL) {
 		return;
@@ -149,7 +182,8 @@ int main() {
     freopen("output.txt", "w", stdout);
     #endif
     node *root = bulid();
-    // printPre(root);
+    //printPre(root);
+    //printInItrative(root);
     // cout<<endl;
     // printPost(root);
     // cout<<endl;
@@ -157,7 +191,7 @@ int main() {
     // cout<<endl;
     int h = find_height(root);
     // cout<<h<<endl;
-    for(int i=1;i<=h;i++) {
+    for(int i=h;i>=0;i--) {
     	printLev(root,i);
     	cout<<endl;
     }
@@ -166,8 +200,8 @@ int main() {
     // int count = no_of_nodes(root);
     // int sum = sum_of_node(root);
     // cout<<count<<" "<<sum;
-    Pair x = diameter_eff(root);
-    cout<<x.d;
+    // Pair x = diameter_eff(root);
+    // cout<<x.d;
     return 0;
 
 }

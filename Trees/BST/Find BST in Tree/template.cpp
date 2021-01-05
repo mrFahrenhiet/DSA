@@ -55,7 +55,8 @@ int find_height(node *root) {
 	int rs = find_height(root->right);
 	int h =  ls+rs+1;
 	return h; 
-}int bst_in_bt(node *root) {
+}
+int bst_in_bt(node *root) {
 	if(!root) {
 		return 0;
 	}
