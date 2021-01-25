@@ -5,7 +5,7 @@ using namespace std;
 vector<vector<int> > dp(100,vector<int>(100,-1) );
 
 int chain_multi(vector<int> &v, int i, int j) {
-    if(i==j) {
+    if(i>=j) {
         dp[i][j] = 0;
         return 0;
     }
@@ -14,7 +14,7 @@ int chain_multi(vector<int> &v, int i, int j) {
     }
     int ans = INT_MAX;
     for(int k=i;k<j;k++) {
-        int cost = chain_multi(v,i,k) + chain_multi(v,k+1,j) + v[i-1]*v[k]*v[j];
+        int cost = chain_multi(v,i,k) + chain_multi(v,k+1,j) + v[i]*v[k]*v[j];
         ans = min(ans,cost);
     }
     dp[i][j] = ans;
@@ -37,6 +37,6 @@ int main() {
         cin>>no;
         v.push_back(no);
     }
-    cout<<chain_multi(v,1,n-1);
+    cout<<chain_multi(v,0,n-1);
 
 }

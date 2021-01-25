@@ -8,7 +8,7 @@ void sieve_eratosthenes(vector<bool>&a) {
 	for(ll i=2;i<a.size();i+=2) {
 		a[i] = false;
 	}
-	for(ll i=3;i<a.size();i++) {
+	for(ll i=3;i<sqrt(a.size());i++) {
 		if(a[i]==true){
 			for(ll j = i*i;j<a.size();j+=i) {
 				a[j] = false;

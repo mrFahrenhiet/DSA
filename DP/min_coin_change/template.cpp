@@ -10,16 +10,15 @@ int min_coins_top(int n,int a[],int size) {
 	if(n==0) {
 		return 0;
 	}
+	if(n<0) return -1;
 	if(dp_top[n]!=0) {
 		return dp_top[n];
 	}
 	int ans = INT_MAX;
 	int subprob = INT_MAX;
 	for(int i=0;i<size;i++) {
-		if(n-a[i]>=0) {
-			subprob = min_coins_top(n-a[i],a,size)+1;
-			ans = min(ans,subprob);
-		}	
+		subprob = min_coins_top(n-a[i],a,size)+1;
+		ans = min(ans,subprob);	
 	}
 	return dp_top[n] = ans;
 }
@@ -43,7 +42,7 @@ int main() {
     // for writing output to output.txt
     freopen("output.txt", "w", stdout);
     #endif
-    int coins[] = {1,5,7};
+    int coins[] = {1,2,5};
     int s = sizeof(coins)/sizeof(int);
 
     int n;
