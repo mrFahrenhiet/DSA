@@ -22,10 +22,6 @@ public:
 	}
 	void dfs(T src) {
 		map<T,bool> visited;
-		for(auto itr:l) {
-			T node = itr.first;
-			visited[node] = false;
-		}
 		dfsHelp(src,visited);
 		return;
 	}
