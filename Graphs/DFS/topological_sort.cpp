@@ -44,14 +44,9 @@ int main() {
     // for writing output to output.txt
     freopen("output.txt", "w", stdout);
     #endif
-    Graph<string> g;
-    g.addEdge("Python","Data Preprocessing");
-    g.addEdge("Data Preprocessing","ML Basics");
-    g.addEdge("Python","Pytorch");
-    g.addEdge("Python","ML Basics");
-    g.addEdge("Pytorch","DL");
-    g.addEdge("ML Basics","DL");
-    
+    Graph<int> g;
+    g.addEdge(1, 0);
+    g.addEdge(0, 1)
     g.dfs();
     return 0;
 

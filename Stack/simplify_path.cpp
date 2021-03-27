@@ -29,7 +29,7 @@ string simplify(string s) {
 		return "/";
 	else {
 		for(auto itr: ans) {
-			res = ("/"+itr);
+			res += ("/"+itr);
 		}
 		return res;
 	}

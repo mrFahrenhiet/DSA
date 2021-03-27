@@ -1,43 +1,33 @@
 #include<bits/stdc++.h>
 #define ll long long int
 using namespace std;
+
 template<typename T>
 class Graph {
-	unordered_map<T, list<T>> l;
-
+private:
+	unordered_map<T, vector<T>> l;
 public:
 	void addEdge(T x, T y) {
 		l[x].push_back(y);
-		// l[y].push_back(x);
+		l[y].push_back(x);
 	}
-	bool cycHelp(T src, map<T,bool> &visited, map<T,T> &parent) {
+
+	bool cycHelp(T src, unordered_map<T,bool>& visited, T parent) {
 		visited[src] = true;
 		for(auto nbr: l[src]) {
-			if(visited[nbr]==true && parent[src]!=nbr) {
-				return true;
-			}
-			else if(visited[nbr]==false) {
-				parent[nbr] = src;
-				bool cyc = dfsHelp(nbr,visited,parent);
-				if(cyc==true) {
-					return true;
-				}
+			if(visited[nbr]==true && parent!=nbr) return true;
+			else if(!visited[nbr]) {
+				if(cycHelp(nbr, visited, src)) return true;
 			}
 		}
 		return false;
 	}
-	void findcyc(T src) {
-		map<T,bool> visited;
-		map<T,T> parent;
-		for(auto itr:l) {
-			T node = itr.first;
-			visited[node] = false;
-		}
-		parent[src] = src;
-		cout<<cycHelp(src,visited,parent);
-		return;
-	}
 
+	bool findcyc(T src) {
+		unordered_map<T,bool> visited;
+		bool x = cycHelp(src,visited, src);
+		return x;
+	}
 };
 
 int main() {
@@ -53,7 +43,6 @@ int main() {
     g.addEdge(1,2);
     g.addEdge(2,3);
     g.addEdge(3,4);
-    g.findcyc(0);
+    cout<<g.findcyc(0)<<endl;
     return 0;
-
 }

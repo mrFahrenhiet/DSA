@@ -21,7 +21,11 @@ int main() {
     // for writing output to output.txt
     freopen("output.txt", "w", stdout);
     #endif
-
+    int t;
+    cin>>t;
+    while(t--) {
+        
+    }
     return 0;
 
 }

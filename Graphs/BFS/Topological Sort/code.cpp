@@ -32,10 +32,10 @@ public:
 				}
 			}
 		}
-		for(auto it: indegree) {
-			if(it.second>0)
-				cout<<it.first<<endl;
-		}
+		// for(auto it: indegree) {
+		// 	if(it.second>0)
+		// 		cout<<it.first<<endl;
+		// }
 		return;
 	}
 };

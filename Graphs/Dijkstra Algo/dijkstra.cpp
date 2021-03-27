@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_map>
 #include <map>
 #include <set>
 #include <utility>
@@ -10,17 +11,17 @@ using namespace std;
 
 template<typename T>
 class Graph {
-    map<T,list<pair<T,int> > > m;
-    stack
+private:
+    unordered_map<T,list<pair<T,int> > > graph;
 public:
     void addEdge(T x,T y,bool bi,int dist) {
-        m[x].push_back(make_pair(y,dist));
+        graph[x].push_back(make_pair(y,dist));
         if(bi)
-            m[y].push_back(make_pair(x,dist));
+            graph[y].push_back(make_pair(x,dist));
     }
 
     void printGraph() {
-        for(auto itr: m) {
+        for(auto itr: graph) {
             cout<<itr.first<<"->";
             for(auto it: itr.second) {
                 cout<<"("<<it.first<<"-"<<it.second<<")"<<", ";
@@ -32,7 +33,7 @@ public:
 
     void dikstras(T src) {
         map<T,int> dist;
-        for(auto itr: m) {
+        for(auto itr: graph) {
             dist[itr.first] = INT_MAX;
         }
         dist[src] = 0;
@@ -44,7 +45,7 @@ public:
             int nodeDist = p.first;
             dist[src] = 0;
             s.erase(s.begin());
-            for(auto nbr: m[node]) {
+            for(auto nbr: graph[node]) {
                 if(dist[nbr.first]>nodeDist+nbr.second) {
                     auto f = s.find(make_pair(dist[nbr.first],nbr.first));
                     if(f!=s.end()) {
