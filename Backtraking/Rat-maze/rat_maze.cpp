@@ -1,47 +1,70 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-bool maze_run(char maze[][100],int o[][100],int m,int n, int i,int j) {
-    if(maze[i][j]=='X') {
-        return false;
-    }
-    if(i==m && j==n) {
-        o[m][n] =1;
-        for(int r=0;r<=m;r++) {
-            for(int c=0;c<=n;c++) {
-                cout<<o[r][c]<<" ";
-            }
-            cout<<endl;
-        }
-        cout<<endl;
-        return true;
-    }
-    if(i>m || j>n) {
-        return false;
-    }
-    o[i][j] = 1;
-    bool right = maze_run(maze,o,m,n,i,j+1);
-    if(right){
-        return true;
-    }
-    bool down  = maze_run(maze,o,m,n,i+1,j);
-    if(down){
-        return true;
-    }
-    o[i][j] = 0;
-    return false;
 
-}
-int main() {
-    int m,n;
-    cin>>m>>n;
-    char a[100][100];
-    int o[100][100] = {0};
-    for(int r=0;r<m;r++) {
-        for(int c=0;c<n;c++) {
-            cin>>a[r][c];
+class Rat_maze {
+private:
+    int size;
+    vector<vector<int>> board;
+public:
+    Rat_maze(int n): board(n, vector<int>(n, 0)) {
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n;j++) {
+                int no;
+                cin>>no;
+                this->board[i][j] = no;
+            }
         }
+        this->size = n;
     }
-    if(!maze_run(a,o,m-1,n-1,0,0)) {
-        cout<<-1;
-    } 
+    void maze_util(vector<string>& res, string o, bool visited[50][50], int i, int j) {
+        if(i<0 or j<0 or i>=this->size or j>=this->size or this->board[i][j]==0) return;
+        if(i==this->size-1 and j==this->size-1) {
+            res.push_back(o);
+            return;
+        }
+        visited[i][j] = true;
+        // Go Down
+        o.push_back('D');
+        maze_util(res, o, visited,i+1, j);
+        o.pop_back();
+        // Go left
+        o.push_back('L');
+        maze_util(res, o, visited,i, j-1);
+        o.pop_back();
+        // Go right
+        o.push_back('R');
+        maze_util(res, o, visited,i, j+1);
+        o.pop_back();
+        // Go up
+        o.push_back('U');
+        maze_util(res, o, visited,i-1, j);
+        o.pop_back();
+        // backtracking step
+        visited[i][j] = false;
+        return;
+    }
+    vector<string> all_solutions() {
+        vector<string> res;
+        string o = "";
+        bool visited[this->size+1][this->size+1];
+        memset(visited, false, sizeof(visited));
+        this->maze_util(res, o, visited, 0, 0);
+        return res;
+    }
+};
+
+int main() {
+    #ifndef ONLINE_JUDGE
+    // for getting input from input.txt
+    freopen("input.txt", "r", stdin);
+    // for writing output to output.txt
+    freopen("output.txt", "w", stdout);
+    #endif
+    int n;
+    cin>>n;
+    Rat_maze r(n);
+    vector<string> ans = r.all_solutions();
+    for(auto str: ans) cout<<str<<endl;
+    return 0;
+
 }

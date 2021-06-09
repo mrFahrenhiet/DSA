@@ -8,19 +8,6 @@ bitset<30> column,d1,d2;
 
 bool n_queen(vector<vector<ll>> &v,ll n, ll i) {
     if(i>=n) {
-        // for(int row=0;row<n;row++) {
-        //  for(int col=0;col<n;col++) {
-        //      if(v[row][col]==1) {
-        //          cout<<"Q ";
-        //      }
-        //      else {
-        //          cout<<"_ ";
-        //      }
-                
-        //  }
-        //  cout<<endl; 
-        // }
-        // cout<<endl;
         count++;
         return true;
     }
