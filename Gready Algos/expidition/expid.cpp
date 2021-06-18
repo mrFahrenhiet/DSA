@@ -1,68 +1,37 @@
 #include<bits/stdc++.h>
+#define ll long long int
 using namespace std;
-bool comp(pair<int,int> p1, pair<int,int> p2) {
-	return p1.first>p2.first;
+
+int min_stops(int stations[1000][2], int n, int target, int start_fuel) {
+	int stops = 0, i = 0, range = start_fuel;
+	priority_queue<int> max_fuel;
+	while(range<target) {
+		while(i < n and range >= stations[i][0]) max_fuel.push(stations[i++][1]);
+		if(max_fuel.empty()) return -1;
+		range += max_fuel.top();
+		max_fuel.pop();
+		stops++;
+	}
+	return stops;
 }
+
 int main() {
 	#ifndef ONLINE_JUDGE
-    // for getting input from input.txt
-    freopen("input.txt", "r", stdin);
-    // for writing output to output.txt
-    freopen("output.txt", "w", stdout);
-    #endif
-    bool flag=true;
-    int n,f,d,F,D,prev=0;
-    cin>>n;
-    vector<pair<int,int>> v;
-    for(int i=0;i<n;i++) {
-    	cin>>d>>f;
-    	v.push_back(make_pair(d,f));
-    }
-    sort(v.begin(), v.end(),comp);
-    cin>>D>>F;
-    for(int i=0;i<n;i++) {
-    	v[i].first = D-v[i].first;
-    }
-    int x =0,ans=0;
-    priority_queue<int> pq;
-    while(x<n) {
-    	if(F>=v[x].first-prev) {
-    		pq.push(v[x].second);
-    		F = F - v[x].first + prev;
-    		prev = v[x].first;
-    	}
-    	else {
-    		if(!pq.empty()) {
-    			F += pq.top();
-    			pq.pop();
-    			ans+=1;
-    			continue;
-    		}
-    		flag=false;
-    		break;
-    	}
-    	x++;
-    }
-    if(flag==false) {
-    	cout<<-1<<endl;
-    }
-    else {
-    	D = D - v[n-1].first;
-    	if(F>=D) {
-    		cout<<ans<<endl;
-    	}
-    	else {
-    		if(pq.empty()) {
-    			flag = false;
-    			cout<<-1<<endl;
-    		}
-    		else {
-    			F += pq.top();
-    			pq.pop();
-    			cout<<ans+1<<endl; 
-    		}
-    	}
-    }
-    return 0;
+	// for getting input from input.txt
+	freopen("input.txt", "r", stdin);
+	// for writing output to output.txt
+	freopen("output.txt", "w", stdout);
+	#endif
+	int t;
+	cin>>t;
+	int stations[1000][2];
+	while(t--) {
+		memset(stations, 0, sizeof(stations));
+		int n, tar, st_f;
+		cin>>n>>tar>>st_f;
+		for(int i=0;i<n;i++) cin>>stations[i][0]>>stations[i][1];
+		cout<<min_stops(stations, n, tar, st_f)<<endl;
+	}
+	return 0;
 
 }
