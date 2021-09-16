@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 #define ll long long int
 using namespace std;
-int solveKnapsak(vector<int>& sz, vector<int>& val, int dp[2005][2005] , int s, int n) {
+int solveKnapsak(vector<int>& sz, vector<int>& val, int dp[105][105] , int s, int n) {
     if(n < 0 || s < 0) return 0;
     if(dp[n][s]!=-1) return dp[n][s];
     int incs = 0, exl = 0;
@@ -9,6 +9,20 @@ int solveKnapsak(vector<int>& sz, vector<int>& val, int dp[2005][2005] , int s, 
     exl = solveKnapsak(sz, val, dp, s, n-1);
     return dp[n][s] = max(incs, exl);
 }
+
+int knapsack_bu(vector<int>& sz, vector<int>& val, int dp[105][105], int s, int n) {
+    for(int i=0;i<n+1;i++) {
+        for(int j=0;j<s+1;j++) {
+            if(!i || !j) dp[i][j] = 0;
+            else {
+                if(sz[i-1] <= j) dp[i][j] = max(val[i-1] + dp[i-1][j-sz[i-1]], dp[i-1][j]);
+                else dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+    return dp[n][s];
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
     // for getting input from input.txt
@@ -20,7 +34,7 @@ int main() {
     cin>>t;
     vector<int> sz;
     vector<int> val;
-    int dp[2005][2005] = {-1};
+    int dp[105][105] = {0};
     while(t--) {
         int s,n;
         cin>>s>>n;

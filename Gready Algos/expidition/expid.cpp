@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#define ll long long int
 using namespace std;
 
 int min_stops(int stations[1000][2], int n, int target, int start_fuel) {
