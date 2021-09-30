@@ -2,10 +2,11 @@
 using namespace std;
 int dp[1000][1000];
 bool p[1000][1000];
-void is_palindrome(string s) {
-    for(int g=0;g<s.length();g++) {
-    	for(int i=0, j=g)
+void is_palindrome(string s, int i, int j) {
+    while(i<=j) {
+        if(s[i]!=s[j]) return false;
     }
+    return true;
 }
 
 int min_parts(string s, int i, int j) {

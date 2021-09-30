@@ -4,17 +4,23 @@ using namespace std;
 class complex {
     float r;
     float i;
+    static int count;
 public:
     complex() {}
     complex(int x, int y) {
-        r = x;
-        i = y;
+        this->r = x;
+        this->i = y;
+        count++;
     }
     void display(void);
     complex operator+(complex);
+    static void display_count(void) {
+    	cout<<"Number of Objects: "<<count<<endl; 
+    }
     friend void operator-(complex &c1);
 
 };
+int complex :: count = 0;
 void complex :: display(void) {
     cout<<r<<" +  i"<<i<<endl;
 }
@@ -33,5 +39,6 @@ int main() {
 	c3.display();
 	-c3;
 	c3.display();
+	complex::display_count();
 	return 0;
 }
