@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
+
 class Edges {
 public:
 	int nbr;
