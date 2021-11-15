@@ -49,7 +49,7 @@ bool allPaths(unordered_map<int, vector<Edges>>& graph, int src, int dest) {
 
 int main() {
 	int v, e;
-	cin>>v>>e;
+	cin>>e>>v;
 	unordered_map<int, vector<Edges>> graph;
 	for(int i=0;i<v;i++) {
 		int s, nb, wt;
@@ -58,8 +58,6 @@ int main() {
 		graph[nb].push_back(Edges(s, wt));
 
 	}
-	int src, dest;
-	cin>>src>>dest;
-	bool x = allPaths(graph, src, dest);
+	bool x = allPaths(graph, 0, e-1);
 	return 0;
 }
