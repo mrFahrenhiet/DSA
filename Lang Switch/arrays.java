@@ -76,8 +76,8 @@ class Array {
         for(int v: arr) System.out.print(v + " ");
         System.out.println();
         int[][] mat = new int[3][3];
-        for(int i=0;i<3;i++) {
-            for(int j=0;j<3;j++) mat[i][j] = scn.nextInt();
+        for(int i=0;i<mat.length;i++) {
+            for(int j=0;j<mat[0].length;j++) mat[i][j] = scn.nextInt();
         }
         printMat(mat);
         int [][] jag = new int[2][];

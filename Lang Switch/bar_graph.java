@@ -17,6 +17,19 @@ class bar_graph {
         return;
     }
 
+    public static void invBar(int[] arr) {
+        int mx = Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++) mx = Math.max(mx, arr[i]);
+        for(int i=1;i<=mx;i++) {
+            for(int j=0;j<arr.length;j++) {
+                if(arr[j] >= i) System.out.print("* ");
+                else System.out.print("  ");
+            }
+            System.out.println();
+        }
+        return;
+    }
+
     public static void main(String[] args) throws Exception
     {
         Scanner scn = new Scanner(System.in);
@@ -34,6 +47,6 @@ class bar_graph {
         int n = scn.nextInt();
         int[] arr = new int[n];
         for(int i=0;i<arr.length;i++) arr[i] = scn.nextInt();
-        barGraph(arr);
+        invBar(arr);
     }
 }
