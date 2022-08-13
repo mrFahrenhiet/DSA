@@ -1,11 +1,38 @@
 class Solution {
-    public boolean validPartition(int[] n) {
-        boolean[] dp = {true, false, n[0] == n[1], false};
-        for (int i = 2; i < n.length; ++i) {
-            boolean two = n[i] == n[i - 1];
-            boolean three = (two && n[i] == n[i - 2]) || (n[i] - 1 == n[i - 1] && n[i] - 2 == n[i - 2]);
-            dp[(i + 1) % 4] = (two && dp[(i - 1) % 4]) || (three && dp[(i - 2) % 4]);
+    private boolean helper(int[] nums, int[] dp, int i) {
+        if(i >= nums.length) return true;
+        if(dp[i] != -1) return dp[i] > 0;
+        
+        // Equality
+        if(i < nums.length - 1 && nums[i+1] == nums[i]) {
+            if(helper(nums, dp, i+2)) {
+                dp[i] = 1;
+                return true;
+            }
+            if(i < nums.length - 2 && nums[i+2] == nums[i+1] && nums[i] == nums[i+1]) {
+                if(helper(nums, dp, i+3)) {
+                    dp[i] = 1;
+                    return true;
+                }
+            }
         }
-        return dp[n.length % 4];
+        
+        // Concecutive
+        if(i < nums.length - 2 && nums[i+1] - nums[i] == 1 && nums[i+2] - nums[i+1] == 1) {
+            if(helper(nums, dp, i+3)) {
+                dp[i] = 1;
+                return true;
+            }
+        }
+        
+        dp[i] = 0;
+        
+        return false;
+    }
+    public boolean validPartition(int[] nums) {
+        int[] dp = new int[nums.length];
+        for(int i=0;i<nums.length;i++) dp[i] = -1;
+        
+        return helper(nums, dp, 0);
     }
 }
