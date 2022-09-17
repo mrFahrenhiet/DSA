@@ -14,7 +14,6 @@ class Solution {
         int arrBob = getDays(arriveBob, nosDays);
         int levAlice = getDays(leaveAlice, nosDays);
         int levBob = getDays(leaveBob, nosDays);
-        System.out.println(arrAlice + " " + arrBob + " " + levAlice + " " + levBob);
         int res = Math.min(levAlice, levBob) - Math.max(arrAlice, arrBob) + 1;
         return res < 0 ? 0 : res;
     }  
