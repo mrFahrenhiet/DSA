@@ -1,0 +1,2 @@
+- This question does not says which element is min and which max in subseq. We can exploit this and treat subseq as subset
+- Use pre-computed pow in array
