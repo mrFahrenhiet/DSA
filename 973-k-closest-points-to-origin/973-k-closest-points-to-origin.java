@@ -21,11 +21,9 @@ class Solution {
         for(int i=0;i<k;i++) {
             pq.add(new Points(points[i][0], points[i][1]));
         }
-        //System.out.println("PriorityQueue - " + pq);
         for(int i=k;i<points.length;i++) {
             Points newPoint = new Points(points[i][0], points[i][1]);
             Points currWorst = pq.peek();
-            //System.out.println(newPoint.vec + " " + currWorst.vec + " " + currWorst.x + " " +currWorst.y);
             if(newPoint.vec < currWorst.vec) {
                 pq.poll();
                 pq.add(newPoint);
