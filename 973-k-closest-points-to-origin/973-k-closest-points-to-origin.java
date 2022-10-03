@@ -6,13 +6,12 @@ class Points {
     public Points(int xc, int yc) {
         this.x = xc;
         this.y = yc;
-        this.vec = Math.sqrt(xc*xc + yc*yc);
     }
 }
 class PointsComparator implements Comparator<Points> {
     @Override
     public int compare(Points p1, Points p2) {
-        return p2.vec > p1.vec ? 1 : p2.vec < p1.vec ? -1 : 0;
+        return (p2.x*p2.x + p2.y*p2.y) - (p1.x*p1.x + p1.y*p1.y);
     }
 }
 class Solution {
@@ -22,11 +21,11 @@ class Solution {
             pq.add(new Points(points[i][0], points[i][1]));
         }
         for(int i=k;i<points.length;i++) {
-            Points newPoint = new Points(points[i][0], points[i][1]);
-            Points currWorst = pq.peek();
-            if(newPoint.vec < currWorst.vec) {
+            Points p1 = new Points(points[i][0], points[i][1]);
+            Points p2 = pq.peek();
+            if((p2.x*p2.x + p2.y*p2.y) - (p1.x*p1.x + p1.y*p1.y) > 0) {
                 pq.poll();
-                pq.add(newPoint);
+                pq.add(p1);
             }
         }
         int[][] res = new int[k][2];
