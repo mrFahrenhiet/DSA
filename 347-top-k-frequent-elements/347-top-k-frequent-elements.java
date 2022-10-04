@@ -1,37 +1,24 @@
-class ElementFreq {
-    public int el;
-    public int freq;
-    public ElementFreq(int e, int f) {
-        this.el = e;
-        this.freq = f;
-    }
-}
-
-class FreqComparator implements Comparator<ElementFreq> {
-    @Override
-    public int compare(ElementFreq e1, ElementFreq e2) {
-        return e2.freq - e1.freq;
-    }
-}
-
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        PriorityQueue<ElementFreq> pq = new PriorityQueue<ElementFreq>(nums.length, new FreqComparator());
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        for(int num: nums)
-            hm.put(num, hm.getOrDefault(num, 0) + 1);
-        
-        for(int key: hm.keySet())
-            pq.add(new ElementFreq(key, hm.get(key)));
-        
-        
+        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        ArrayList<Integer>[] buckets = new ArrayList[nums.length+1];
         int[] res = new int[k];
-        int i = 0;
-        while(i < k) {
-            res[i] = pq.poll().el;
-            i++;
+        
+        for(int num: nums) hm.put(num, hm.getOrDefault(num, 0) + 1);
+        
+        for(int num: hm.keySet()) {
+            int freq = hm.get(num);
+            if(buckets[freq] == null)
+                buckets[freq] = new ArrayList<>();
+            buckets[freq].add(num);
         }
-
+        
+        for(int j=buckets.length-1;j>=1 && k>0;j--) {
+            if(buckets[j] == null) continue;
+            ArrayList<Integer> temp = buckets[j];
+            for(int num: temp) res[--k] = num;
+        }
+        
         return res;
     }
 }
