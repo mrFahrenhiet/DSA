@@ -21,7 +21,6 @@ class Solution {
         while(pq.size() > 0) {
             ListNode cur = pq.poll();
             if(cur != null) {
-                //System.out.println(cur.val);
                 traveler.next = cur;
                 traveler = traveler.next;
                 if(cur.next != null) pq.add(cur.next);
