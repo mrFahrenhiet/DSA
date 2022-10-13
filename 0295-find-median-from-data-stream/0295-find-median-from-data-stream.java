@@ -5,23 +5,18 @@ class MedianFinder {
     public MedianFinder() {
         this.minQ = new PriorityQueue<Integer>((a,b)->b-a);
         this.maxQ = new PriorityQueue<Integer>();
-        this.even = true;
     }
     
     public void addNum(int num) {
-        if(even) {
-            maxQ.offer(num);
+        minQ.offer(num);
+        maxQ.offer(minQ.poll());
+        
+        if(maxQ.size() > minQ.size())
             minQ.offer(maxQ.poll());
-        }
-        else {
-            minQ.offer(num);
-            maxQ.offer(minQ.poll());
-        }
-        this.even = !this.even;
     }
     
     public double findMedian() {
-        if(even)
+        if(minQ.size() <= maxQ.size())
             return (minQ.peek() + maxQ.peek()) / 2.0;
         else return minQ.peek();
     }
