@@ -3,8 +3,8 @@ class MedianFinder {
     PriorityQueue<Integer> maxQ;
     boolean even;
     public MedianFinder() {
-        this.minQ = new PriorityQueue<Integer>((a,b)->b-a);
-        this.maxQ = new PriorityQueue<Integer>();
+        this.minQ = new PriorityQueue<Integer>();
+        this.maxQ = new PriorityQueue<Integer>((a,b)->b-a);
     }
     
     public void addNum(int num) {
