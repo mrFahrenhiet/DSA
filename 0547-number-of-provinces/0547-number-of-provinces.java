@@ -1,5 +1,5 @@
 class Solution {
-    public void dfs(int i, boolean[] visited, int[][] isConnected) {
+    private void dfs(int i, boolean[] visited, int[][] isConnected) {
         visited[i] = true;
         for(int j=0;j<isConnected[i].length;j++) {
             if(!visited[j] && isConnected[i][j] == 1)
