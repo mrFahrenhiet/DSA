@@ -4,10 +4,12 @@ class Solution {
         Map<String, List<String>> map = new HashMap<>();
         
         for(int i=0;i<strs.length;i++) {
-            char[] charStr = strs[i].toCharArray();
-            Arrays.sort(charStr);
+            char[] charMap = new char[26];
+            for(int j=0;j<strs[i].length();j++)
+                charMap[strs[i].charAt(j) - 'a']++;
             
-            String strsSorted = new String(charStr);
+            
+            String strsSorted = String.valueOf(charMap);
             
             if(!map.containsKey(strsSorted)) map.put(strsSorted, new ArrayList<>());
             map.get(strsSorted).add(strs[i]);
