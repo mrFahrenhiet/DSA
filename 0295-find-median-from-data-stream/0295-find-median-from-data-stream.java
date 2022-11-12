@@ -1,7 +1,7 @@
 class MedianFinder {
     PriorityQueue<Integer> minQ;
     PriorityQueue<Integer> maxQ;
-    boolean even;
+
     public MedianFinder() {
         this.minQ = new PriorityQueue<Integer>();
         this.maxQ = new PriorityQueue<Integer>((a,b)->b-a);
@@ -16,9 +16,9 @@ class MedianFinder {
     }
     
     public double findMedian() {
-        if(minQ.size() <= maxQ.size())
+        if(minQ.size() == maxQ.size())
             return (minQ.peek() + maxQ.peek()) / 2.0;
-        else return minQ.peek();
+        return minQ.peek();
     }
 }
 
