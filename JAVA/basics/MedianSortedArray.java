@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.*;
 import java.util.*;
 
 
@@ -11,8 +10,9 @@ class MedianSortedArray {
         if(len%2==0) return (arr[st + mid] + arr[st + mid-1])/2;
         return arr[st + mid];
     }
-    public statc int medianArrays(int[] arr1, int[] arr2) {
+    public static int medianArrays(int[] arr1, int[] arr2) {
         int med1 = median(arr1, 0, arr1.length-1);
+        return med1;
     }
     public static void main(String[] args)
     {
@@ -32,5 +32,6 @@ class MedianSortedArray {
         for(int i=0;i<n;i++) arr1[i] = scn.nextInt();
         for(int i=0;i<n;i++) arr2[i] = scn.nextInt();
         int x = medianArrays(arr1, arr2);
+        System.out.println(x);
     }
 }

@@ -6,7 +6,7 @@ import java.util.*;
 class diff_arr {
 
     public static int[] diff(int[] arr1, int[] arr2) {
-        int n = arr2.length
+        int n = arr2.length;
         int[] res = new int[n];
         int c = 0;
         int i1 = arr1.length-1, i2 = arr2.length-1, i = res.length-1;
@@ -14,6 +14,7 @@ class diff_arr {
             int digi = 0;
             if(i1 > 0 && i2 > 0) digi = arr1[i1] - arr2[i] + c;
         }
+        return arr1;
     }
     public static void main(String[] args)
     {
