@@ -1,0 +1,1 @@
+Only 2 elements can have greater count than n / 3
