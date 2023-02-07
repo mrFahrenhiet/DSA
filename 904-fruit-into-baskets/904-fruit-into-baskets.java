@@ -13,7 +13,6 @@ class Solution {
                 }
                 
                 fruitTypes.remove(minKey);
-                System.out.println(minKey);
                 j = minIdx+1;
             }
             
