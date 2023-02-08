@@ -1,16 +1,12 @@
 class Solution {
     private boolean verify(int[] weights, int days, int capacity) {
-        int curLoad = 0;
-        //System.out.println(capacity);
-        
+        int curLoad = 0;        
         for(int i=0;i<weights.length;i++) { 
             if(capacity < weights[i]) return false;
             
             if(curLoad + weights[i] > capacity) {
                 days--;
-                //System.out.println(curLoad + " " + weights[i] + " " + days);
-                curLoad = 0;
-                
+                curLoad = 0;   
             }
             
             if(days <= 0) return false;
