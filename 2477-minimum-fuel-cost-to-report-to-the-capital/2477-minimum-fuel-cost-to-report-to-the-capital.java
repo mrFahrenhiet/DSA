@@ -1,6 +1,6 @@
 class Solution {
     private long res = 0;
-    private int helper(ArrayList<Integer>[] graph, int seats, int parent, int cur) {
+    private int helper(List<Integer>[] graph, int seats, int parent, int cur) {
         int nosPeople = 1;
         if(graph[cur] != null) {
             for(int nbr: graph[cur]) {
@@ -22,7 +22,7 @@ class Solution {
     public long minimumFuelCost(int[][] roads, int seats) {
         // init
         
-        ArrayList<Integer>[] graph = new ArrayList[roads.length+1];
+        List<Integer>[] graph = new ArrayList[roads.length+1];
         
         // fill graph
         for(int[] road: roads) {
