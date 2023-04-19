@@ -39,26 +39,20 @@ class Solution {
         if(start >= end) return new int[] {nums[start]};
         
         int mid = (2*start + end - start) / 2;
-        
-        //System.out.println(start + " " + mid + " " + end);
-        
+                
         int[] left = helper(nums, start, mid);
         int[] right = helper(nums, mid+1, end);
         
         getReversePairs(left, right);
         
         int[] merged = merge(left, right);
-        
-        //System.out.println(nosReversePairs);
-        
+                
         return merged;
     }
     
     public int reversePairs(int[] nums) {
         int[] temp = helper(nums, 0, nums.length-1);
         
-        // for(int t: temp) System.out.print(t + " ");
-        // System.out.println();
         
         return nosReversePairs;
     }
