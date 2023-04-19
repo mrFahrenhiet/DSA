@@ -1,0 +1,3 @@
+- Find reverse pair in a function seperate to merge
+- To handle infinity always transfer the 2 to division side (arr[i] / 2.0 > arr[j])
+- To do float comparision while dividing, divide by "2.0" -> decimal is important here (like pytorch)
