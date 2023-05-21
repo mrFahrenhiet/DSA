@@ -4,9 +4,6 @@ class Solution {
         
         Arrays.sort(nums);
         
-        for(int num: nums) System.out.print(num + " ");
-        System.out.println();
-        
         for(int i=0;i<nums.length;i++) {
             List<Integer> temp = new ArrayList<Integer>();
             
@@ -19,7 +16,6 @@ class Solution {
             while(st < en) {
                 while(st < en && st > i+1 && nums[st] == nums[st-1]) st++;
                 if(st >= en) break;
-                //if(st < en && en < nums.length - 1 && nums[en] == nums[en + 1]) en--;
                 
                 if(nums[st] + nums[en] == target) {
                     temp.add(nums[st]);
