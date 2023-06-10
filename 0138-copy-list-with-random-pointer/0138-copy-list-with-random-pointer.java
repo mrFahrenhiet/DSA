@@ -21,9 +21,7 @@ class Solution {
         
         while(temp != null) {
             Node newList = new Node(temp.val);
-            
             nodeMap.put(temp, newList);
-            
             temp = temp.next;
         }
         
