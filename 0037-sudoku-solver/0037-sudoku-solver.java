@@ -10,8 +10,12 @@ board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c) return false;
     }
     
     private boolean helper(char[][] board, int i, int j) {
+        if(j >= board[0].length) {
+            i++;
+            j = 0;
+        }
+        
         if(i >= board.length) return true;
-        if(j >= board[0].length) return helper(board, i+1, 0);
         if(board[i][j] != '.') return helper(board, i, j+1);
         
         for(int k=1;k<=9;k++) {
