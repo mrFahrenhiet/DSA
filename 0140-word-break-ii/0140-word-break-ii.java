@@ -11,7 +11,6 @@ class Solution {
         for(int i=1;i<=s.length();i++) {
             String temp = s.substring(0, i);
             if(dict.contains(temp)) {
-                // System.out.println(temp);
                 int stIdx = sent.length();
                 sent.append(temp);
                 sent.append(" ");
