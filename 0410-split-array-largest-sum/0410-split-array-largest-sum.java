@@ -1,11 +1,9 @@
 class Solution {
     private boolean isFesable(int[] nums, int k, int maxSubArrSum) {
-        int maxSubArrLen = nums.length - k + 1;
         int subArrSum = 0;
         
         for(int i=0;i<nums.length;i++) {            
             subArrSum += nums[i];
-            maxSubArrLen--;
             
             if(subArrSum > maxSubArrSum) {
                 k--;
