@@ -18,6 +18,7 @@ class Solution {
         
         return m <= 0;
     }
+    
     public int minDays(int[] bloomDay, int m, int k) {
         int low = 1, high = 0;
         for(int bloom: bloomDay) high = Math.max(high, bloom);
