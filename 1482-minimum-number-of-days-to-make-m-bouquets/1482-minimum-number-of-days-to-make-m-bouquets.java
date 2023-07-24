@@ -1,19 +1,15 @@
 class Solution {
     private boolean isDaysEnough(int[] bloomDay, int m, int k, int days) {
-        Queue<Integer> q = new LinkedList<Integer>();
+        int flowers = 0;
         
         for(int i = 0; i < bloomDay.length; i++) {
-            if(bloomDay[i] <= days) q.add(i);
-            else {
-                while(q.size() > 0) q.remove();
-            }
+            if(bloomDay[i] <= days) flowers++;
+            else flowers = 0;
             
-            if(q.size() >= k) {
+            if(flowers >= k) {
                 m--;
-                while(q.size() > 0) q.remove();
-            }
-            
-            if(m <= 0) return true;
+                flowers = 0;
+            }            
         }
         
         return m <= 0;
