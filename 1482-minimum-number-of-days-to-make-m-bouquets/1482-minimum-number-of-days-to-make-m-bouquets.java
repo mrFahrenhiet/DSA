@@ -16,6 +16,8 @@ class Solution {
     }
     
     public int minDays(int[] bloomDay, int m, int k) {
+        if(m > bloomDay.length / k) return -1;
+            
         int low = 1, high = 0;
         for(int bloom: bloomDay) high = Math.max(high, bloom);
                 
@@ -26,9 +28,7 @@ class Solution {
             else
                 low = mid + 1;
         }
-        
-        boolean lastRes = isDaysEnough(bloomDay, m, k, low);
-                
-        return lastRes ? low: -1;
+                        
+        return low;
     }
 }
