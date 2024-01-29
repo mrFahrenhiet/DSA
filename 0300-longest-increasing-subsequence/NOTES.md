@@ -1,0 +1,2 @@
+- Think bottom up
+- How can we optmize bottom up
