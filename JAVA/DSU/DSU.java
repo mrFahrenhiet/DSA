@@ -87,10 +87,13 @@ public class DSU {
                 scn = new Scanner(new File("input.txt"));
             }
             catch (Exception e) {
+                System.out.println(e);
             }
         }
         int nNodes = scn.nextInt();
         int nEdges = scn.nextInt();
+
+        scn.close();
         
         DisjointSet dsu = new DisjointSet(nNodes);
 
@@ -122,6 +125,8 @@ public class DSU {
         // System.out.println(isSameComponent);
 
         dsu.unionSize(3, 7);
+
+        System.out.println("HH!");
 
         // isSameComponent_2 = dsu.findParent(1) == dsu.findParent(7);
         // System.out.println(isSameComponent_2);

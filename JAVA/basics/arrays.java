@@ -55,7 +55,7 @@ class Array {
     }
 
     public static void fun(int[] arr) {
-        System.out.print("Arr: ");
+        System.out.print("ArrThis: ");
         for(int i=0;i<arr.length;i++) System.out.print(arr[i] + " ");
         System.out.println();
     }
@@ -72,7 +72,9 @@ class Array {
         FastReader scn = new FastReader();
         int[] arr = new int[5];
         for(int i=0;i<5;i++) arr[i] = scn.nextInt();
+
         fun(arr);
+
         for(int v: arr) System.out.print(v + " ");
         System.out.println();
         int[][] mat = new int[3][3];
